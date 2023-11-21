@@ -1,0 +1,39 @@
+.body-class{ 
+    background:rgba(84, 75, 206, 0.494) ;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+.nav-box{
+    background-color: rgba(rgb(1rgb(72, 171, 72)17, 117), rgb(103rgb(97, 97, 182)6, 103), blue, alpha);
+    margin-top: 0px;
+    height:30px;
+    width: 15px;
+}
+
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #333;
+}
+
+li {
+float: left;
+}
+
+li a {
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+
+li a:hover:not(.active) {
+background-color: #111;
+}
+
+.active {
+background-color: #04AA6D;
+}

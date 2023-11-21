@@ -1,0 +1,29 @@
+.body-class{
+    background-color: rgb(247, 245, 244);
+}
+
+
+.page-box{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 18px;
+    align-items: center;
+    
+}
+.page-button{
+    background-color: antiquewhite;
+    width: 280px;
+    height: 60px;
+    border: none;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    transition: box-shadow 0.15s;
+}
+.page-button:hover{
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.signup{
+    width: 50px;
+}
