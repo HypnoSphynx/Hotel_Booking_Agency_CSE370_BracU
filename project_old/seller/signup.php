@@ -1,13 +1,4 @@
 <!DOCTYPE html>
-<?php
-include connection.php
-$name='zawadul karim'
-$email='zawadul1@gmail.com'
-$password='zawad1234'
-$sql="INSERT into customer values
-        (c_id,$name,$email,$password,01814267904,0)"
-
-?>
 <html>
     <head>
         <title>Travel Nest- Sign Up</title>

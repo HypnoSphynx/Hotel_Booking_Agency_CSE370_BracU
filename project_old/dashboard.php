@@ -5,7 +5,7 @@
 <link rel='stylesheet' href='dashboard.css'>
 
 </head>
-<body>
+<body class="background-color">
 <!--Sidebar line 10-line 19-->
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
@@ -19,7 +19,20 @@
   <button class="openbtn" onclick="openNav()">☰ Travel Nest</button>  
 
   <div class="main-content">
-    <div class='login-box'> hey</div>
+    <div class='user-information'> 
+      <h3><text style="color:white; margin-left:500px; font-size:40px">User Information<text></h3>
+      <div style='margin-top:200px'>
+      <h2><text style='color:white'>Name:<text></h3>
+      <h2><text style='color:white'>User ID:<text></h3>
+      <h2><text style='color:white; margin-top:200px'>Email:<text></h3>
+      <h2><text style='color:white'>Contact Number: <text></h3>
+      <h2><text style='color:white'><text>Total Orders:</h3>
+
+
+</div>
+
+
+    </div>
   <div>
     
        

@@ -1,3 +1,8 @@
+.background-color{
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(115,151,156,1) 45%, rgba(0,212,255,1) 100%);
+}
+
 body {
   font-family: "Lato", sans-serif;
 }
@@ -25,7 +30,7 @@ body {
 }
 
 .sidebar a:hover {
-  color: #f1f1f1;
+  color: #b23333;
 }
 
 .sidebar .closebtn {
@@ -54,20 +59,21 @@ body {
   padding: 16px;
 }
 
-.login-box{
+.user-information{
     border-radius: 25px;
     background: #111111;
     padding: 20px;
-    width: 500px;
+    width: 1300px;
     height: 700px;
-    background-color: rgb(254, 253, 251);
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,107,121,1) 45%, rgba(0,212,255,1) 100%);
 
-    margin-top: 100px;
-    margin-bottom: 150px;
+    margin-top: 70px;
     margin-right: 150px;
-    margin-left: 700px;
-    /* height: 30%;
-    width: 50%; */
+    margin-left: 150px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     
+}
+.text-center{
+  text-align: center;
 }

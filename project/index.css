@@ -1,50 +1,9 @@
-.background {
-    background-image: url("background.jpg");
-    background-color: #cccccc;
+body{
+    background: url("background.jpg");
    }
 
-.nav-box{
-background-color: rgba(rgb(1rgb(72, 171, 72)17, 117), rgb(103rgb(97, 97, 182)6, 103), blue, alpha);
-margin-top: 0px;
-height:30px;
-width: 15px;
-}
 
-ul {
-list-style-type: none;
-margin: 0;
-padding: 0;
-overflow: hidden;
-background-color: #333;
-}
+.dropdown-menu{
 
-li {
-float: left;
-}
-
-li a {
-display: block;
-color: white;
-text-align: center;
-padding: 14px 16px;
-text-decoration: none;
-}
-
-li a:hover:not(.active) {
-background-color: #111;
-}
-
-.active {
-background-color: #04AA6D;
-}
-
-
-
-h4{
-    text-align: center;
-    color: rgb(75, 236, 248);
-    font-size: 180px;
-    font-family: 'Times New Roman', Times, serif;
-    margin-top: 500px;
-    
+    align-self: center;
 }
