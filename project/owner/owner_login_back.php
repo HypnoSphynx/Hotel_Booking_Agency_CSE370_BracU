@@ -13,7 +13,7 @@ if(!empty($email) && !empty($password)){
     $result = $stmt->get_result();
 
     if($result->num_rows > 0){
-        echo 'login successful';
+        header("Location: home.php");
     } else {
         echo 'Invalid email or password';
     }
