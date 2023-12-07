@@ -65,7 +65,7 @@ include 'authentication.php' ?>
                                         $email = $row['ho_email'];
                                         $number = $row['ho_number'];
                                         $gender = $row['ho_gender'];
-                                        $class = $row['ho_address'];
+                                        $address = $row['ho_address'];
                                     }
                                 }
                             }
@@ -91,8 +91,8 @@ include 'authentication.php' ?>
                             <div class="row gx-3 mb-3">
                                 <!-- User Class Box-->
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputOrgName">User Class</label>
-                                    <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value='<?php echo $class ?>'>
+                                    <label class="small mb-1" for="inputOrgName">Address</label>
+                                    <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value='<?php echo $address ?>'>
                                 </div>
                                 <!-- Gender Box-->
                                 <div class="col-md-6">

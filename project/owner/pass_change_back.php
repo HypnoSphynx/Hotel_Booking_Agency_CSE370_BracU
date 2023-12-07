@@ -8,7 +8,6 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
 
 include 'dbconnect.php';
 $currentUser=$_SESSION['email'];
-
 $pass1=$_POST['newpass'];
 $pass2=$_POST['newpass2'];
 
