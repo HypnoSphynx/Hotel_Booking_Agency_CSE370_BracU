@@ -28,6 +28,9 @@ $phone = $_POST['h_number'];
 $email = $_POST['h_email'];
 $location = $_POST['h_location'];
 $description = $_POST['h_description'];
+$roomCount = $_POST['roomCount'];
+
+
 
 // Handle the image upload
 $image = $_FILES['h_image']['name'];
@@ -40,8 +43,9 @@ if (!empty($image) && move_uploaded_file($_FILES['h_image']['tmp_name'], $target
     if (!empty($name) && !empty($phone) && !empty($email) && !empty($location) && !empty($description)) {
 
         // Insert the hotel into the database
-        $stmt = $conn->prepare("INSERT INTO Hotel VALUES (NULL, ?, ?, ?, ?, ?, NULL, NULL, ?)");
-        $stmt->bind_param("ssssss", $name, $phone, $email, $location, $description, $owner_id);
+
+        $stmt = $conn->prepare("INSERT INTO Hotel VALUES (NULL, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sisssi", $name, $phone, $email, $location, $description, $owner_id);
 
         if ($stmt->execute()) {
             // Get the hotel ID from the last insert AND insert the image
@@ -49,10 +53,24 @@ if (!empty($image) && move_uploaded_file($_FILES['h_image']['tmp_name'], $target
             $stmt = $conn->prepare("INSERT INTO Hotel_image_archive VALUES (?, ?)");
             $stmt->bind_param("ss", $last_id, $image);
             $stmt->execute();
-            // echo 'signup successful';
-            header('Location: owner_dashboard.php');
-        } else {
-            echo "Error: " . $stmt->error;
+
+            // Get the number of room types
+
+            // Prepare the statement to insert the room data
+            $stmt = $conn->prepare("INSERT INTO Room VALUES (?, ?, ?, ?)");
+
+            // Insert each room type into the database
+            for ($i = 0; $i < $roomCount; $i++) {
+                $r_type = $_POST['r_type' . $i];
+                $r_price = $_POST['r_price' . $i];
+                $r_quantity = $_POST['r_quantity' . $i];
+                $stmt->bind_param("isii", $last_id, $r_type, $r_price, $r_quantity);
+                $stmt->execute();
+            }
+            header('Location: owner_dashboard_front.php');
+            exit;
         }
     }
 }
+
+?>

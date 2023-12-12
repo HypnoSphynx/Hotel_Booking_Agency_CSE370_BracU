@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/owner_login_design.css">
 </head>
 <body>
+    <!-- Importing Navbar-->
     <?php include '..\global_navbar.php' ?>
     <form action="owner_login_back.php" class="box" method="post">
         <h1>Login as Hotel Owner</h1>

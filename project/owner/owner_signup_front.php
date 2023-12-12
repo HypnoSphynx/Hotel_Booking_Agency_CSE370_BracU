@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/owner_signup_design.css">
 </head>
 <body>
-    <?php include '..\global_navbar.php' ?>
+    <?php include "..\global_navbar.php" ?>
     <form action="owner_signup_back.php" class="box" method="post">
 
         <h1>Sign Up as Ownerr</h1>

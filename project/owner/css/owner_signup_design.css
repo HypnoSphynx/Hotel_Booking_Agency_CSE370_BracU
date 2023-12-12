@@ -32,6 +32,14 @@ body{
     font-weight: 500;
 }
 
+.box h3{
+    color: white;
+    font-family: "Times New Roman";
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
 .box input[type = "text"], .box input[type = "int"], .box input[type = "password"]{
     border: 0;
     background: none;
@@ -81,4 +89,9 @@ body{
 .box p:hover{
     text-decoration: underline;
     cursor: pointer;
+}
+
+.alt-back{
+    background: rgb(245,178,207);
+    background: radial-gradient(circle, rgba(245,178,207,1) 0%, rgba(148,191,233,0.8995973389355743) 100%);
 }
