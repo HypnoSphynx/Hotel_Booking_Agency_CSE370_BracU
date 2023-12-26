@@ -10,10 +10,10 @@ Thank you for checking our project. This repository is for a simple hotel bookin
 There are two folders in this repo.  
 
 ### 2.1 ER_Schema_DB
-As the name suggests this folder contains ER, Schema and SQL queries. **You can ignore Schema and ER as these things are part of the initial planning**. See **ER_Schema** section if you are interested.   
+As the name suggests this folder contains ER, Schema and SQL queries. **You can ignore Schema and ER as these things are part of the initial planning**. See [ER_Schema ](https://github.com/HypnoSphynx/TravelNest_CSE370_Fall23_BracU#4-er_schema) section if you are interested.   
 
    
-There is also a file called **Database.sql**. Which contains all the queries to create the database and necessary tables. **You must have to create this or the code might not work properly**. Checkout **Environment Setup** section to know more.
+There is also a file called **Database.sql**. Which contains all the queries to create the database and necessary tables. **You must have to create this or the code might not work properly**. Checkout [Environment Setup](https://github.com/HypnoSphynx/TravelNest_CSE370_Fall23_BracU#3-environment-setup) section to know more.
 
 There is also a file which is the project report. **From here you can know if this project is worth your time or not.**
 
