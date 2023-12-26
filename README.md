@@ -27,12 +27,12 @@ To run the website properly on your computer follow this instruction.
 2. Download this repository as a zip.
 3. Extract the zip folder.
 3. Copy TravelNest folder.
-5. Then search for the **htdocs** folder. 
+5. Then search for the **htdocs** folder.  
 For **Windows** the direct filepath will be - ```C:/xampp/htdocs```  
 For **Linux** the direct filepath will be - ```/opt/lampp/htdocs```  
 
 6. Then paste the TravelNest folder on the htdocs folder.
-7. Now start Xampp.
+7. Now start Xampp.  
 For **Windows** go to Xampp app then Manage Servers and turn on all of the option.  
 For **Linux** just run ```sudo  /opt/lampp/lampp start``` on your terminal.  
 
