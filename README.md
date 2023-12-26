@@ -15,7 +15,7 @@ As the name suggests this folder contains ER, Schema and SQL queries. **You can 
    
 There is also a file called **Database.sql**. Which contains all the queries to create the database and necessary tables. **You must have to create this or the code might not work properly**. Checkout [Environment Setup](https://github.com/HypnoSphynx/TravelNest_CSE370_Fall23_BracU#3-environment-setup) section to know more.
 
-There is also a file which is the project report. **From here you can know if this project is worth your time or not.**
+There is also a file which is the project report. **From here you will be able to know if this project is worth your time or not.**
 
 ### 2.2 TravelNest 
 **This folder contains all the code to build the website**. TravelNest is the name of our Hotel Booking System. Here in this folder you will again notice two folders, one of them is owner and another one is user. owner contains all the code needed for the hotel owner panel and another one is user which contains all files for the customer panel. And there are some common files outside of these two folders, this is what anyone would see if they are not logged in to any of these entities.
