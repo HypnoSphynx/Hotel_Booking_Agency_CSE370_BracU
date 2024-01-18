@@ -1,3 +1,5 @@
+<!-- showing the details of a hotel when user is logged in -->
+
 <?php include 'authentication.php' ?>
 <!doctype html>
 <html lang="en">
@@ -13,9 +15,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>title here</title>
     <style>
+        /* Create two equal columns that floats next to each other */
         .con {
             background: white;
-
             display: grid;
             width: 200%;
             grid-template-columns: 1fr 1fr;
@@ -41,7 +43,7 @@
             margin-bottom: 30px;
         }
 
-
+        /* Style the buttons */
         .im-box {
 
             width: 50%;
@@ -64,23 +66,24 @@
 </head>
 
 <body>
-
+    <!-- imporing navbar and connecting with backend -->
     <?php include 'user_navbar.php' ?>
     <?php include 'hotel_details_back.php' ?>
 
     <div class="row">
-  <div class="column" >
-        <?php if (!empty($Hotel_images)) : ?>
-        <!-- image passing -->
-        <?php foreach ($Hotel_images as $hotel_image) : ?>
-            <img src="..\owner/hotel_pic/<?php echo $hotel_image; ?>" alt="Hotel image" style='max-height:500px; max-width:100%'>
-        <?php endforeach; ?>
-        <?php else : ?>
-            <img src="..\owner/hotel_pic/default_hotel.jpg" alt="Hotel image" style='max-height:500px; max-width:100%' >
-        <?php endif; ?></div> 
+        <div class="column">
+            <?php if (!empty($Hotel_images)) : ?>
+                <!-- image passing -->
+                <?php foreach ($Hotel_images as $hotel_image) : ?>
+                    <img src="..\owner/hotel_pic/<?php echo $hotel_image; ?>" alt="Hotel image" style='max-height:500px; max-width:100%'>
+                <?php endforeach; ?>
+                <!-- default image -->
+            <?php else : ?>
+                <img src="..\owner/hotel_pic/default_hotel.jpg" alt="Hotel image" style='max-height:500px; max-width:100%'>
+            <?php endif; ?>
+        </div>
 
-
-
+        <!-- printing hotel details  -->
         <div class="column">
             <h2>Information</h2>
             <h4>Hotel:<?php echo '  ' . $hotel['h_name'] . '    '; ?> <br>Location: <?php echo $hotel['h_location']; ?> <br>Email: <?php echo $hotel['h_email'] . '    '; ?> <br> </h4>
@@ -95,11 +98,8 @@
                 <?php endforeach; ?>
             </ul>
         </div>
-
-
     </div>
-
-
+    <!-- end of showing hotel details -->
 
 
     <!-- Calender -->
@@ -111,11 +111,8 @@
         <input type="submit" name="submit" target="__self" value="Check Availability">
     </form>
 
-   
 
     <!-- checking room availability using the selected dates -->
-
-
     <div class="col-xl-12">
         <div class="card">
             <div class="card-body">
@@ -124,20 +121,18 @@
                         <table class="table table-striped align-middle table-nowrap">
                             <tbody>
                                 <tr>
-                            <?php
-    // Check if form is submitted
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Get the from and to dates
-        $from = $_POST['from'];
-        $to = $_POST['to'];
+                                    <?php
+                                    // Check if form is submitted
+                                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                        // Get the from and to dates from the form
+                                        $from = $_POST['from'];
+                                        $to = $_POST['to'];
 
-        // Print the from and to dates
-        echo "From: " . $from . "<br>";
-        echo "To: " . $to . "<br>";
-
-        // ... rest of your code ...
-    }
-    ?>
+                                        // Print the from and to dates enterd by the user
+                                        echo "From: " . $from . "<br>";
+                                        echo "To: " . $to . "<br>";
+                                    }
+                                    ?>
                                 </tr>
                                 <tr>
                                     <!-- just coloum heading -->
@@ -160,18 +155,14 @@
                                         <!-- checking if the room type is in the array then it will subtract the b_amount from the total quantity of the room type else it will show the total quantity of the room type -->
                                         <td><?php echo isset($room_bookings[$room['r_type']]) ? $room['r_quantity'] -= $room_bookings[$room['r_type']] : $room['r_quantity']; ?></td>
                                         <td>
-                                            <!-- form to book the room -->
-
                                         </td>
                                     </tr>
 
                                 <?php endforeach; ?>
-
-                                <!-- ... existing code ... -->
-
                             </tbody>
                         </table>
 
+                        <!-- if the user is logged in then it will show the booking button else it will show the signup button -->
                         <form action="hotel_confirm.php" method="post">
                             <!-- running loop based on per loop -->
                             <?php foreach ($rooms as $room) : ?>
@@ -202,7 +193,10 @@
             </div>
         </div>
 
-
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
 </html>

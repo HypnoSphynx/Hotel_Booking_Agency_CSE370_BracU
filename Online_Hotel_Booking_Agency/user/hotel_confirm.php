@@ -1,4 +1,5 @@
 <!-- here it will get order info -->
+
 <?php include 'authentication.php' ?>
 
 <!doctype html>
@@ -22,6 +23,7 @@
     <?php
     require_once('dbconnect.php');
 
+    // Getting the current user's id from the session using the email
     $currentUser = $_SESSION['email'];
     $sql = "SELECT c_id FROM Customer WHERE c_email='$currentUser'";
     $result = mysqli_query($conn, $sql);
@@ -36,64 +38,66 @@
         $total_price = 0;
         // Loop through each room type
         foreach ($_POST['quantity'] as $room_type => $quantity) {
-            if ($quantity!=0){
-            // Get the hotel id, room type, and room price for this room type
-            $hotel_id = $_POST['hotel_id'][$room_type];
-            $room_price = $_POST['room_price'][$room_type];
-            $total_price = $quantity * $room_price;
+            if ($quantity != 0) {
+                // Get the hotel id, room type, and room price for this room type
+                $hotel_id = $_POST['hotel_id'][$room_type];
+                $room_price = $_POST['room_price'][$room_type];
+                $total_price = $quantity * $room_price;
 
-            echo "Hotel ID: " . $hotel_id . "<br>";
-            echo "Room Type: " . $room_type . "<br>";
-            echo "Quantity: " . $quantity . "<br>";
-            echo "Total Price: " . $total_price  . "<br>";
-            echo "From: " . $from . "<br>";
-            echo "To: " . $to . "<br>";
+                // Print the booking information
+                echo "Hotel ID: " . $hotel_id . "<br>";
+                echo "Room Type: " . $room_type . "<br>";
+                echo "Quantity: " . $quantity . "<br>";
+                echo "Total Price: " . $total_price  . "<br>";
+                echo "From: " . $from . "<br>";
+                echo "To: " . $to . "<br>";
 
+                // Get the hotel owner id
+                $stmt = $conn->prepare("SELECT ho_id FROM Hotel WHERE h_id = ?");
+                $stmt->bind_param("i", $hotel_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $row = $result->fetch_assoc();
+                if ($row) {
+                    $ho_id = $row['ho_id'];
+                }
 
-            
-            // Get the hotel owner id
-            $stmt = $conn->prepare("SELECT ho_id FROM Hotel WHERE h_id = ?");
-            $stmt->bind_param("i", $hotel_id);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $row = $result->fetch_assoc();
-            if ($row) {
-                $ho_id = $row['ho_id'];
-            }
-
-            $current_time = date('Y-m-d H:i:s', time());
-            $default_payment = 'CASH';
-            $stmt = $conn->prepare("
+                // Insert the payment information into the database
+                $current_time = date('Y-m-d H:i:s', time());
+                $default_payment = 'CASH';
+                $stmt = $conn->prepare("
             INSERT INTO Payment (p_id, p_amount, p_method, p_time, c_id, ho_id) 
             VALUES (NULL, ?, ?, ?, ?, ?)
         ");
 
-            $stmt->bind_param("issii", $total_price, $default_payment, $current_time, $c_id, $ho_id);
-            $stmt->execute();
+                $stmt->bind_param("issii", $total_price, $default_payment, $current_time, $c_id, $ho_id);
+                $stmt->execute();
 
-            $p_id = $conn->insert_id;
+                // to get the current payment id
+                $p_id = $conn->insert_id;
 
-            $stmt2 = $conn->prepare("
+                // Insert the booking information into the database
+                $stmt2 = $conn->prepare("
             INSERT INTO Booking (b_id, b_amount, b_from, b_to, p_id) 
             VALUES (NULL, ?, ?, ?, ?)
         ");
+                $stmt2->bind_param("issi", $quantity, $from, $to, $p_id);
+                $stmt2->execute();
+                $b_id = $conn->insert_id; // to get the current booking id 
 
-
-            $stmt2->bind_param("issi", $quantity, $from, $to, $p_id);
-            $stmt2->execute(); // Corrected here
-            $b_id = $conn->insert_id;
-
-            $stmt3 = $conn->prepare("
+                // Insert the what type of room is booked in which hotel
+                $stmt3 = $conn->prepare("
             INSERT INTO Books_room (b_id, r_type, h_id)
             VALUES (?, ?, ?)
         ");
-            $stmt3->bind_param("isi", $b_id, $room_type, $hotel_id);
-            $stmt3->execute();
-        }}
+                $stmt3->bind_param("isi", $b_id, $room_type, $hotel_id);
+                $stmt3->execute();
+            }
+        }
 
         // Redirect to confirmation page
         echo "Booking confirmed!";
-    } else {
+    } else { // If form is not submitted
         echo "No booking information received.";
     }
     ?>

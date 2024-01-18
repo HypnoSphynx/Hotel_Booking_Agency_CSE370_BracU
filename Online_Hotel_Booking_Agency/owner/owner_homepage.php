@@ -17,6 +17,7 @@
   <title>Travel Nest</title>
 </head>
 
+<!-- actual homepage -->
 <body>
   <?php include 'owner_navbar.php'; ?>
 

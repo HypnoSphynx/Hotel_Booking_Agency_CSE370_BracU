@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<title>Sign Up as Owner</title>
+    <meta charset="utf-8">
+    <title>Sign Up as Owner</title>
     <link rel="stylesheet" href="css/owner_signup_design.css">
 </head>
+
 <body>
+    <!-- using global navbar as the page is before login -->
     <?php include "..\global_navbar.php" ?>
     <form action="owner_signup_back.php" class="box" method="post">
 
@@ -23,4 +26,5 @@
     </form>
 
 </body>
+
 </html>

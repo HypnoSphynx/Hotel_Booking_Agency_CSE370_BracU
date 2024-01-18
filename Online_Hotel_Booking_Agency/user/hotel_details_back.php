@@ -1,3 +1,5 @@
+<!-- when user clicks on a hotel to know more, this page begins to work in behind.  -->
+
 <?php
 require_once('dbconnect.php');
 
@@ -22,13 +24,13 @@ if (isset($_GET['h_id'])) {
     $stmt3->execute();
     $rooms = $stmt3->get_result()->fetch_all(MYSQLI_ASSOC);
 
-    // sql query to find images based on the hotel id
+    // sql query to find images based on the hotel id and pushing the image address into the array
     $stmt4 = $conn->prepare("SELECT h_image FROM Hotel_image_archive WHERE h_id = ?");
     $stmt4->bind_param("i", $h_id);
     $stmt4->execute();
     $result4 = $stmt4->get_result();
-    $Hotel_images = array(); // initialize as an empty array
 
+    $Hotel_images = array();
     while ($row = $result4->fetch_assoc()) {
         array_push($Hotel_images, $row["h_image"]);
     }
@@ -38,10 +40,6 @@ if (isset($_POST['submit'])) {
     $from = $_POST['from'];
     $to = $_POST['to'];
 
-    
-
-
-
     // sql query to find b_from, b_to from booking table and used join query to get the h_id from booking table with the help of b_id
     $stmt = $conn->prepare("
     SELECT Booking.b_from, Booking.b_to, Books_room.h_id
@@ -50,8 +48,6 @@ if (isset($_POST['submit'])) {
     $stmt->execute();
     $result = $stmt->get_result();
     $bookings = $result->fetch_all(MYSQLI_ASSOC);
-
-
 
 
     // array to store the count of how many rooms are booked based on the room type
@@ -65,10 +61,7 @@ if (isset($_POST['submit'])) {
         // if the hotel id is same and b_from and b_to is in between the selected dates then it will execute the query
         if ($booking['h_id'] == $h_id && !(($booking['b_from'] < $from && $booking['b_to'] < $from) || ($booking['b_from'] > $to && $booking['b_to'] > $to))) {
 
-
-
-            // sql query to find the room type and b_amount from room table and used first join query to get the r_type and h_id from room table with the help of h_id and second join query to get the b_amount from booking table with the help of b_id. this query shows the room type and b_amount of the selected hotel id and selected dates.
-
+            // sql query to find which room type is booked and how many rooms are booked based on the room type based on the hotel id and b_from and b_to
             $stmt5 = $conn->prepare("
             SELECT Books_room.r_type, Booking.b_amount, Booking.b_id 
             FROM Books_room
@@ -82,7 +75,7 @@ if (isset($_POST['submit'])) {
                 $quantity[] = $row;
             }
             foreach ($quantity as $booking) {
-                //if the room type is already in the array then it will add the b_amount to the previous b_amount else it will add the room type and b_amount to the array.
+                // if the b_id is not in the visited array then it will execute the query. This is done to avoid the duplicate b_id and to count the room type only once.
                 if (!in_array($booking['b_id'], $visited_b_ids)) {
                     // Add the b_id to the visited array
                     $visited_b_ids[] = $booking['b_id'];

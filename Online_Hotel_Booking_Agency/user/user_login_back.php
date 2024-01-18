@@ -5,14 +5,15 @@ $email = $_POST['c_email'];
 $password = $_POST['c_password'];
 $login = False;
 
-if(!empty($email) && !empty($password)){
-  
+if (!empty($email) && !empty($password)) {
+
     $stmt = $conn->prepare("SELECT * FROM Customer WHERE c_email = ? AND c_password = ?");
     $stmt->bind_param("ss", $email, $password);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if($result->num_rows > 0){
+    // here we are checking if the email and password matches with the database and starting a session and passing the email to the session variable
+    if ($result->num_rows > 0) {
         $login = true;
         session_start();
         $_SESSION['loggedin'] = true;
@@ -27,5 +28,4 @@ if(!empty($email) && !empty($password)){
 } else {
     echo "All fields are required";
     die();
-}   
-?>
+}

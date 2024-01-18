@@ -1,3 +1,5 @@
+<!-- homepage of the website -->
+
 <!doctype html>
 <html lang="en">
 
@@ -16,6 +18,7 @@
     body {
       background: url("background.jpg");
     }
+
     .dropdown-menu {
       align-self: center;
     }
@@ -24,12 +27,9 @@
 
 
 <body>
-
-
-
+  <!-- Start of Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="index.php">Travel Nest</a>
-
 
     <!-- Button to All Hotels -->
     <a href="all_hotel.php" class="btn btn-outline-info my-2 my-sm-0 ml-2">All Hotels</a>
@@ -60,14 +60,14 @@
             <a class="dropdown-item" href="user/user_login_front.php">User</a>
             <a class="dropdown-item" href="owner/owner_login_front.php">Hotel Owner</a>
           </div>
-
-          
         </li>
       </ul>
     </div>
   </nav>
+  <!-- End of Navbar -->
 
-      <!-- Search -->
+
+  <!-- Searchbar in middle of the page -->
   <div style="margin-top: 18%; margin-left:35%">
     <h2 style="margin-left:10%">Welcome to Travel Nest</h2>
     <h2 style="margin-left:16%">Search Now</h2><br><br>
@@ -77,8 +77,8 @@
       <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
-
-
+  <!-- End of Searchbar in middle of the page -->
+  
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

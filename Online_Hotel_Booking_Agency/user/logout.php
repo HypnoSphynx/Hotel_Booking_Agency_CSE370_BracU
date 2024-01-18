@@ -1,3 +1,4 @@
+<!-- ending session when customer pressing logout button -->
 <?php
 session_start();
 session_unset();

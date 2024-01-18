@@ -1,3 +1,5 @@
+<!-- Building Connection with the DB -->
+
 <?php
 
 $servername = "localhost";
@@ -10,12 +12,11 @@ $dbname = "Hotel_Manage";
 $conn = new mysqli($servername, $username, $password);
 
 //check connection 
-if($conn->connect_error){
+if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
-	}
-else{
+} else {
 	mysqli_select_db($conn, $dbname);
 	// echo "Connection successful";
-	}
+}
 
 ?>

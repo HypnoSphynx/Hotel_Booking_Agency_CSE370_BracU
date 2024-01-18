@@ -1,3 +1,5 @@
+<!-- to show all hotels when you are logged in -->
+
 <?php
 include 'authentication.php';?>
 
@@ -5,6 +7,7 @@ include 'authentication.php';?>
 <html>
 
 <head>
+    <!-- importing bootstrap and CSS -->
     <link rel="stylesheet" href="search_result.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <style>
@@ -35,24 +38,25 @@ include 'authentication.php';?>
             $Hotel_location = $row["h_location"];
             $Hotel_email = $row["h_email"];
 
-            // finding the hotel features
+              // finding the hotel features then initializing an empty array and pushing the features into the array
             $stmt3 = "SELECT h_features FROM Hotel_features WHERE h_id = " . $row["h_id"];
             $result3 = mysqli_query($conn, $stmt3);
-            $Hotel_features = array(); // initialize as an empty array
-
+            
+            $Hotel_features = array(); 
             while ($row3 = mysqli_fetch_assoc($result3)) {
                 array_push($Hotel_features, $row3["h_features"]);
             }
 
-            // finding the hotel images
+            // finding the hotel images then initializing an empty array and pushing the image address into the array
             $stmt4 = "SELECT h_image FROM Hotel_image_archive WHERE h_id = " . $row["h_id"];
             $result4 = mysqli_query($conn, $stmt4);
-            $Hotel_images = array(); // initialize as an empty array
-
+            
+            $Hotel_images = array();
             while ($row4 = mysqli_fetch_assoc($result4)) {
                 array_push($Hotel_images, $row4["h_image"]);
             }
 
+            // finding the max and min price room of the hotel
             $stmt5 = "SELECT MAX(r_price) as max_price, MIN(r_price) as min_price FROM Room WHERE h_id = " . $row["h_id"];
             $result5 = mysqli_query($conn, $stmt5);
 
@@ -88,8 +92,8 @@ include 'authentication.php';?>
                         </div>
                     </div>
                 </div>
-
             </div> ';
+                     //Printing Hotel Details ends here
 ;
         }
     } else {  //it will show error when no hotel is in db

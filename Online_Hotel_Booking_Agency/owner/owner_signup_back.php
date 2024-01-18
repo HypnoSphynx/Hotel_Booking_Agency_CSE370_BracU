@@ -8,8 +8,8 @@ $password = $_POST['ho_password'];
 $gender = $_POST['ho_gender'];
 $address = $_POST['ho_address'];
 
-if(!empty($name) && !empty($phone) && !empty($email) && !empty($password) && !empty($gender) && !empty($address)){
-  
+if (!empty($name) && !empty($phone) && !empty($email) && !empty($password) && !empty($gender) && !empty($address)) {
+
     $stmt = $conn->prepare("INSERT INTO Hotel_Owner VALUES (NULL, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssss", $name, $phone, $email, $gender, $address, $password);
     $stmt->execute();
@@ -20,5 +20,3 @@ if(!empty($name) && !empty($phone) && !empty($email) && !empty($password) && !em
     echo "All fields are required";
     die();
 }
-
-?>

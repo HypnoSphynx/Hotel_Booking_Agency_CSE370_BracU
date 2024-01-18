@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/user_signup_design.css">
 </head>
 <body>
+    <!-- accessing global navbar -->
     <?php include '..\global_navbar.php' ?>
 
     <form action="user_signup_back.php" class="box" method="post">

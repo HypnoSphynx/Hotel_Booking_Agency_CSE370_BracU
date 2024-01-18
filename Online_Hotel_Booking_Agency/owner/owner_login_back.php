@@ -14,6 +14,7 @@ if (!empty($email) && !empty($password)) {
     $stmt->execute();
     $result = $stmt->get_result();
 
+    // checking if the owner exists or not
     if ($result->num_rows > 0) {
         $login = true;
         session_start();

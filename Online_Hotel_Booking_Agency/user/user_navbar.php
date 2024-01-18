@@ -1,3 +1,5 @@
+<!-- navbar when a user is loggedin -->
+
 <!doctype html>
 <html lang="en">
 
@@ -14,7 +16,6 @@
 </head>
 
 <body>
-  <!--Nav Bar-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="home.php">Travel Nest</a>
     <!-- Search -->
@@ -22,7 +23,6 @@
       <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

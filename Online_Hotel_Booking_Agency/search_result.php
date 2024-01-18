@@ -1,3 +1,5 @@
+<!-- shows the search result based on query -->
+
 <!DOCTYPE html>
 <html>
 
@@ -51,15 +53,16 @@
             </ul>
         </div>
     </nav>
+    <!-- End of Navbar -->
 
 
     <?php
     require_once('dbconnect.php');
     $query = $_POST['query'];
-    $noresults = true;
+    $noresults = true; //taking this variable to check if the search term does match with any hotel name or location or features
 
     if (!empty($query)) {
-        // Query to find the hotel id
+        // Query to find the hotel id based on the search term
         $stmt = "SELECT h.h_id FROM Hotel h
         WHERE h_name LIKE '%$query%' OR h_location LIKE '%$query%'
         UNION 
@@ -81,24 +84,25 @@
                 $Hotel_email = $row2["h_email"];
 
 
-                // Finding the hotel features
+                // Finding the hotel features and storing them in an array
                 $stmt3 = "SELECT h_features FROM Hotel_features WHERE h_id = " . $row["h_id"];
                 $result3 = mysqli_query($conn, $stmt3);
-                $Hotel_features = array(); 
+                $Hotel_features = array();
 
                 while ($row3 = mysqli_fetch_assoc($result3)) {
                     array_push($Hotel_features, $row3["h_features"]);
                 }
 
-                // Finding the hotel images
+                // Finding the hotel images and storing them in an array
                 $stmt4 = "SELECT h_image FROM Hotel_image_archive WHERE h_id = " . $row["h_id"];
                 $result4 = mysqli_query($conn, $stmt4);
-                $Hotel_images = array(); // initialize as an empty array
+                $Hotel_images = array(); 
 
                 while ($row4 = mysqli_fetch_assoc($result4)) {
                     array_push($Hotel_images, $row4["h_image"]);
                 }
 
+                // Finding the max and min price of a room of the hotel
                 $stmt5 = "SELECT MAX(r_price) as max_price, MIN(r_price) as min_price FROM Room WHERE h_id = " . $row["h_id"];
                 $result5 = mysqli_query($conn, $stmt5);
 
@@ -107,7 +111,7 @@
                     $min_price = $row5["min_price"];
                 }
 
-                $noresults = false;  // to make sure that the no results found , return what went wrong
+                $noresults = false;  // making this variable false because the search term does match with the hotel name or location or features
 
                 //choosing the first image from the array of images
                 $imageSrc = !empty($Hotel_images) ? './owner/hotel_pic/' . $Hotel_images[0] : './owner/hotel_pic/default_hotel.jpg';
@@ -128,7 +132,7 @@
                                 <p class="description">Email: ' . $Hotel_email . '</p>
                             </div>
                             <div class="col-sm-3 text-align-center" style="margin-top:9%">
-                                <p class="value3 mt-sm">'.$min_price.'TK - '.$max_price.'TK</p>
+                                <p class="value3 mt-sm">' . $min_price . 'TK - ' . $max_price . 'TK</p>
                                 <p class="fs-mini text-muted" >Per Night</p>
                                 <a class="btn btn-primary btn-info btn-sm" href="hotel_details.php?h_id=' . $row["h_id"] . '">View Rooms</a>
                             </div>
@@ -137,7 +141,9 @@
 
                 </div> ';
             }
+            //printing ends
         }
+        // if the search term does not match with any hotel name or location or features
         if ($noresults) {
             echo '<div class="jumbotron jumbotron-fluid">
                     <div class="container">

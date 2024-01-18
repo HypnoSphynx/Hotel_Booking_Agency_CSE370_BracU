@@ -1,12 +1,14 @@
-<!-- that is what user will see when they try to log in -->
+<!-- that is what owner will see when they try to log in -->
 
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<title>Login as User</title>
+    <meta charset="utf-8">
+    <title>Login as User</title>
     <link rel="stylesheet" href="css/owner_login_design.css">
 </head>
+
 <body>
     <!-- Importing Navbar-->
     <?php include '..\global_navbar.php' ?>
@@ -21,4 +23,5 @@
     </form>
 
 </body>
+
 </html>

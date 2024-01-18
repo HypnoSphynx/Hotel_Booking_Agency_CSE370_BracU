@@ -1,10 +1,13 @@
+<!-- front page of user login -->
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<title>Login as User</title>
+    <meta charset="utf-8">
+    <title>Login as User</title>
     <link rel="stylesheet" href="css/user_login_design.css">
 </head>
+
 <body>
     <?php include '..\global_navbar.php' ?>
     <form action="user_login_back.php" class="box" method="post">
@@ -18,4 +21,5 @@
     </form>
 
 </body>
+
 </html>

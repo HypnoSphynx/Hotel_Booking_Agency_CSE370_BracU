@@ -1,3 +1,4 @@
+<!-- here onwer will see all the hotel info under him-->
 <?php require_once('dbconnect.php'); ?>
 <?php include 'authentication.php'; ?>
 <!DOCTYPE html>
@@ -30,15 +31,16 @@
     <?php include 'owner_navbar.php' ?>
 
 
-<?php include 'owner_dashboard_back.php' ?>
+    <?php include 'owner_dashboard_back.php' ?>
 
-<div class="col-md-12 col-md-pull-3" style="border-style:groove; width:180%">
-    <?php
-    $count = 0;
-    while ($row = $result->fetch_assoc()) {
-        $count++;
-    ?>
-        <div class="col-md-12 col-md-pull-3" style="border-style:groove; width:180%">
+    <div class="col-md-12 col-md-pull-3" style="border-style:groove; width:180%">
+        <?php
+        $count = 0;
+        // running a loop to get all the hotels under a owner
+        while ($row = $result->fetch_assoc()) {
+            $count++;
+        ?>
+            <div class="col-md-12 col-md-pull-3" style="border-style:groove; width:180%">
                 <div class="search-result-item-body">
                     <div class="row">
                         <div class="col-sm-9">
@@ -46,16 +48,18 @@
                             <p class="info">Hotel_id: <?php echo $row['h_id'] ?></p>
                             <p class="info">Location: <?php echo $row['h_location'] ?></p>
                         </div>
+                        <!-- to edit hotel info -->
                         <div class="col-sm-3 text-align-center" style="margin-top:3%">
-                        <a class="btn btn-primary btn-info btn-sm" href="hotel_edit_front.php?h_id=<?php echo $row['h_id']; ?>">Edit Information</a>
+                            <a class="btn btn-primary btn-info btn-sm" href="hotel_edit_front.php?h_id=<?php echo $row['h_id']; ?>">Edit Information</a>
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
         <?php
         }
         ?>
 
+        <!-- displaying total number of hotels and total amount earned by the owner -->
         <p class="info-box">Total Hotels: <?php echo $count; ?></p>
         <p class="info-box">Total Earned: <?php echo $total_amount; ?></p>
 

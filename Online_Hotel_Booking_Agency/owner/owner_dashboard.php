@@ -1,7 +1,6 @@
-<!-- here he will see all the hotel info under him-->
+<!-- here an owner will see all the hotel info under him-->
 <?php
 
-// include 'authentication.php';
 require_once('dbconnect.php');
 
 // Get the user ID from the session
